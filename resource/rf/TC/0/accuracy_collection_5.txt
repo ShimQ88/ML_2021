@@ -1,0 +1,2 @@
+MaxDepth, RegressionAccuracy, MaxCategories, TermCritera, ClassCount, Test_Accuracy, Train_Accuracy
+12, 5, 0.010000, 500, 2, 61.049725, 61.861187

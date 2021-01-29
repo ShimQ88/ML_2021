@@ -1,0 +1,40 @@
+#THis is sample gnuplot
+
+set title "Comparsion with TermCritera"
+set xlabel "Count"
+set ylabel "Accuracy"
+set xrange [0:70]
+set yrange [0:100]
+
+#check_valid_column(c) = valid(c) ? check_valid_column(c + 1) : c - 1
+#stats 'resource/rf/accuracy_collection0.txt' using (check_valid_column(1)) nooutput
+
+#last_column = int(STATS_max)
+
+
+CE10 = 10
+CE15 = 15
+CE20 = 20
+#file(i) = sprintf("resource/rf/accuracy_collection0.txt",i)
+set output "graph/Nov.out" 
+plot "<(sed -n '2,10p' resource/rf/accuracy_collection_5.txt )" using 4:6 smooth unique with lp title 'TestMin5' linestyle 1,\
+"<(sed -n '2,10p' resource/rf/accuracy_collection_5.txt )" using 4:7 smooth unique with lp title 'TrainMin5' linestyle 2,\
+"<(sed -n '2,10p' resource/rf/accuracy_collection_6.txt )" using 4:6 smooth unique with lp title 'TestMin6' linestyle 3,\
+"<(sed -n '2,10p' resource/rf/accuracy_collection_6.txt )" using 4:7 smooth unique with lp title 'TrainMin6' linestyle 4,\
+"<(sed -n '2,10p' resource/rf/accuracy_collection_7.txt )" using 4:6 smooth unique with lp title 'TestMin7' linestyle 5,\
+"<(sed -n '2,10p' resource/rf/accuracy_collection_7.txt )" using 4:7 smooth unique with lp title 'TrainMin7' linestyle 6,\
+"<(sed -n '2,10p' resource/rf/accuracy_collection_8.txt )" using 4:6 smooth unique with lp title 'TestMin8' linestyle 7,\
+"<(sed -n '2,10p' resource/rf/accuracy_collection_8.txt )" using 4:7 smooth unique with lp title 'TrainMin8' linestyle 8,\
+"<(sed -n '2,10p' resource/rf/accuracy_collection_9.txt )" using 4:6 smooth unique with lp title 'TestMin9' linestyle 9,\
+"<(sed -n '2,10p' resource/rf/accuracy_collection_9.txt )" using 4:7 smooth unique with lp title 'TrainMin9' linestyle 10,\
+
+#"<(sed -n '16,20p' resource/accuracy10.txt )" using 1:3 smooth unique with lp title 'CE10' linestyle 15,\
+#"<(sed -n '2,6p' resource/accuracy15.txt )" using 1:3 smooth unique with lp title 'CE15' linestyle 2,\
+#"<(sed -n '9,13p' resource/accuracy15.txt )" usimakeng 1:3 smooth unique with lp title 'CE15' linestyle 2,\
+#"<(sed -n '16,20p' resource/accuracy15.txt )" using 1:3 smooth unique with lp title 'CE15' linestyle 2,\
+#"<(sed -n '2,6p' resource/accuracy20.txt )" using 1:3 smooth unique with lp title 'CE20' linestyle 12,\
+#"<(sed -n '9,13p' resource/accuracy20.txt )" using 1:3 smooth unique with lp title 'CE20' linestyle 12,\
+#"<(sed -n '16,20p' resource/accuracy20.txt )" using 1:3 smooth unique with lp title 'CE20' linestyle 12
+
+
+save "graph/Nov.ep" 
